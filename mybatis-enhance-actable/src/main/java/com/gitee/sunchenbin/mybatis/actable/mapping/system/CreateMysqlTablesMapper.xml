@@ -273,7 +273,7 @@
 	<select id="addTableIndex" parameterType="java.util.Map">
 
 		<foreach collection="tableMap" index="tableName" item="fields" separator=";">
-				CREATE INDEX ${fields.filedIndexName}
+				CREATE ${fields.filedIndexType} INDEX ${fields.filedIndexName}
 				ON `${tableName}` (
 				<foreach collection="fields.filedIndexValue" index="index" item="columnName">
 					<if test="fields.filedIndexValue.size == 1">

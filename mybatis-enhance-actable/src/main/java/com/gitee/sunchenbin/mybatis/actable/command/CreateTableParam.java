@@ -71,6 +71,11 @@ public class CreateTableParam implements Cloneable{
 	private String filedIndexName;
 
 	/**
+	 * 索引类型
+	 */
+	private String filedIndexType;
+
+	/**
 	 * 所以字段列表
 	 */
 	private List<String> filedIndexValue;
@@ -197,6 +202,14 @@ public class CreateTableParam implements Cloneable{
 
 	public void setFiledIndexName(String filedIndexName) {
 		this.filedIndexName = filedIndexName;
+	}
+
+	public String getFiledIndexType() {
+		return filedIndexType;
+	}
+
+	public void setFiledIndexType(String fieldIndexType) {
+		this.filedIndexType = fieldIndexType;
 	}
 
 	public List<String> getFiledIndexValue() {

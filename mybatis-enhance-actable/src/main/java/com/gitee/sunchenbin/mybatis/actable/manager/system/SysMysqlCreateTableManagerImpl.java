@@ -613,6 +613,7 @@ public class SysMysqlCreateTableManagerImpl implements SysMysqlCreateTableManage
 							: idxPrefix + index.value());
 					param.setFiledIndexValue(
 							indexValue.length == 0 ? Arrays.asList(ColumnUtils.getColumnName(field,clas)) : Arrays.asList(indexValue));
+					param.setFiledIndexType(index.type());
 				}
 				// 获取当前字段的@Unique注解
 				Unique unique = field.getAnnotation(Unique.class);
