@@ -1,5 +1,6 @@
 package com.gitee.sunchenbin.mybatis.actable.annotation;
 
+import com.gitee.sunchenbin.mybatis.actable.constants.MySqlIndexTypeConstant;
 import org.springframework.core.annotation.AliasFor;
 
 import java.lang.annotation.Documented;
@@ -33,7 +34,7 @@ public @interface Index {
      *
      * @return
      */
-    String type() default "";
+    MySqlIndexTypeConstant type() default MySqlIndexTypeConstant.DEFAULT;
 
     /**
      * 要建立索引的字段名，不设置默认为当前标记字段名@Column的name

@@ -10,10 +10,7 @@ import com.gitee.sunchenbin.mybatis.actable.command.MySqlTypeAndLength;
 import com.gitee.sunchenbin.mybatis.actable.command.SysMysqlColumns;
 import com.gitee.sunchenbin.mybatis.actable.command.SysMysqlTable;
 import com.gitee.sunchenbin.mybatis.actable.command.TableConfig;
-import com.gitee.sunchenbin.mybatis.actable.constants.Constants;
-import com.gitee.sunchenbin.mybatis.actable.constants.MySqlCharsetConstant;
-import com.gitee.sunchenbin.mybatis.actable.constants.MySqlEngineConstant;
-import com.gitee.sunchenbin.mybatis.actable.constants.MySqlTypeConstant;
+import com.gitee.sunchenbin.mybatis.actable.constants.*;
 import com.gitee.sunchenbin.mybatis.actable.dao.system.CreateMysqlTablesMapper;
 import com.gitee.sunchenbin.mybatis.actable.manager.util.ConfigurationUtil;
 import com.gitee.sunchenbin.mybatis.actable.utils.ClassScaner;
@@ -613,7 +610,12 @@ public class SysMysqlCreateTableManagerImpl implements SysMysqlCreateTableManage
 							: idxPrefix + index.value());
 					param.setFiledIndexValue(
 							indexValue.length == 0 ? Arrays.asList(ColumnUtils.getColumnName(field,clas)) : Arrays.asList(indexValue));
-					param.setFiledIndexType(index.type());
+					if (index.type() == MySqlIndexTypeConstant.DEFAULT) {
+						param.setFiledIndexType("");
+					}else {
+						param.setFiledIndexType(index.type().toString());
+					}
+
 				}
 				// 获取当前字段的@Unique注解
 				Unique unique = field.getAnnotation(Unique.class);
